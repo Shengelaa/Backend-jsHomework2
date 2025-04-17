@@ -41,5 +41,31 @@ myBatteryCar.getBatteryLevel();
 //    ]
 
 class Libary {
-    
+  constructor() {
+    this.books = [];
+  }
+
+  addBook(author, book, year) {
+    this.books.push({ author, book, year });
+  }
+
+  removeBook(book) {
+    this.books = this.books.filter((b) => b.book !== book);
+    //მოკლედ B არის წიგნების მასივი, B.book არის წიგნის სახელი, თუ B.book -
+    //არ უდრის მაშინ რჩება მასივშ, თუ უდრის removeBookში გადმოცემულ
+    //სახელს რა მაშინ ამოვარდება მასივიდან
+  }
+
+  listBooks() {
+    console.log(this.books);
+  }
 }
+
+const myLibrary = new Libary();
+myLibrary.addBook("George ORwell", "Ninteen Eighty-four", 1948);
+
+myLibrary.addBook("AvtoriaGela", "GelasWigni", 2023);
+
+myLibrary.removeBook("Ninteen Eighty-four");
+
+myLibrary.listBooks();
