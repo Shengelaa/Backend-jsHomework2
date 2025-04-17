@@ -67,3 +67,26 @@ myLibrary.addBook("AvtoriaGela", "GelasWigni", 2023);
 myLibrary.removeBook(2);
 
 myLibrary.listBooks();
+
+//
+//
+//3) Create a class Employee with a method calculateSalary() that calculates salary based on hours worked and hourly rate.
+
+class Employee {
+  constructor(name, worked, hourly = 25) {
+    this.name = name;
+    this.worked = worked;
+    this.hourly = hourly;
+  }
+
+  calculateSalary() {
+    const salary = this.worked * this.hourly;
+    console.log(
+      `Employees Name: ${this.name} Has made ${salary} in ${this.worked} Hours`
+    );
+  }
+}
+
+const employee1 = new Employee("levani", 5);
+
+employee1.calculateSalary();
