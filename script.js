@@ -90,3 +90,89 @@ class Employee {
 const employee1 = new Employee("levani", 5);
 
 employee1.calculateSalary();
+
+//4) Create a class ShoppingCart that holds a list of items. methods, addItem(), deleteItem(), updateItem(), calculateTotal()
+//
+
+class ShoppingCart {
+  constructor() {
+    this.items = [];
+  }
+
+  addItem(name, price) {
+    this.items.push({ name, price });
+  }
+
+  deleteItem(name) {
+    this.items = this.items.filter((item) => item.name !== name);
+  }
+
+  //DeleteItemში არ გამომიყენებია Id, გამოვიყენე სახელით წაშლა
+  //თუ პრობლემაა უცებ შემიძლია გადასწორება, ან მეთოდს ვიყენებდი მესამე დავალებაში მარა გადავცვალე
+
+  updateItem(name, newPrice) {
+    const item = this.items.find((item) => item.name === name);
+    if (item) {
+      item.price = newPrice;
+    }
+  }
+
+  calculateTotal() {
+    return this.items.reduce((total, item) => total + item.price, 0);
+  }
+}
+
+const myShoppingCart = new ShoppingCart();
+
+myShoppingCart.addItem("book", 20);
+myShoppingCart.addItem("Egg", 100);
+myShoppingCart.addItem("Ball", 50);
+myShoppingCart.deleteItem("Egg");
+console.log(myShoppingCart.calculateTotal());
+
+//5)  Create a CarFactory class that have following methods, addCar, deleteCar, updateCar, getAllCars. getAllCars should be array of objects with following properties: [
+//{
+//  year: 2010 // use random year from 2010 to 2024 using math.random
+//  model: 'Ferrari',
+// price: 350000
+//  }
+//]
+//
+//
+
+class CarFactory {
+  constructor() {
+    this.cars = [];
+    this.id = 1;
+  }
+
+  addCar(model, price) {
+    const year = Math.floor(Math.random() * (2024 - 2010) + 2010);
+    this.cars.push({ id: this.id++, model, price, year });
+  }
+
+  deleteCar(id) {
+    this.cars = this.cars.filter((car) => car.id !== id);
+  }
+
+  updateCar(id, newModel, newPrice) {
+    const car = this.cars.find((car) => car.id === id);
+    if (car) {
+      car.model = newModel;
+      car.price = newPrice;
+    }
+  }
+
+  getAllCars() {
+    return this.cars;
+  }
+}
+
+const myCar1 = new CarFactory();
+myCar1.addCar("Ferrari", 250000);
+myCar1.addCar("Subaru", 50000);
+myCar1.addCar("Toyota", 10000);
+
+myCar1.updateCar(2, "Subaru", 100000);
+myCar1.deleteCar(3);
+console.log(myCar1.getAllCars());
