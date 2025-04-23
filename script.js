@@ -176,3 +176,76 @@ myCar1.addCar("Toyota", 10000);
 myCar1.updateCar(2, "Subaru", 100000);
 myCar1.deleteCar(3);
 console.log(myCar1.getAllCars());
+
+//6) Create a class rectangle that receives width and height and add this methods getArea(), getPerimeter(), isSquare()
+
+class Rectangle {
+  constructor(width, height) {
+    this.width = width;
+    this.height = height;
+  }
+
+  getArea() {
+    return this.width * this.height;
+  }
+
+  getPerimeter() {
+    return 2 * (this.width + this.height);
+  }
+
+  isSquare() {
+    return this.width === this.height;
+  }
+
+  //Tu Rectanglis width da height tolia mashin otxkurtxedia chveulebrivi
+}
+
+const myRectangle = new Rectangle(10, 20);
+
+console.log(myRectangle.getArea());
+console.log(myRectangle.getPerimeter());
+console.log(myRectangle.isSquare());
+
+///7) Create a Class Inventory that holds a list of items, Each item has name, stock, price Methods: addItem(), updateStock(name, quantity), checkAvailability(name), calculateValue()
+///
+///
+
+class Inventory {
+  constructor() {
+    this.items = [];
+  }
+
+  addItem(name, stock, price) {
+    this.items.push({ name, stock, price });
+  }
+
+  updateStock(name, quantity) {
+    const item = this.items.find((item) => item.name === name);
+    if (item) {
+      item.stock += quantity;
+    }
+  }
+  checkAvailability(name) {
+    const item = this.items.find((item) => item.name === name);
+    if (item) {
+      return item.stock > 0 ? "Available" : "Not Available";
+    }
+  }
+
+  calcuteValue() {
+    return this.items.reduce(
+      (total, item) => total + item.stock * item.price,
+      0
+    );
+  }
+}
+
+const myInventory = new Inventory();
+myInventory.addItem("Wigni", 10, 20);
+myInventory.addItem("Kvercxi", 100, 2);
+myInventory.addItem("Paska", 50, 5);
+myInventory.updateStock("Kvercxi", 50);
+myInventory.updateStock("Wigni", -10);
+console.log(myInventory.checkAvailability("Kvercxi"));
+console.log(myInventory.checkAvailability("Wigni"));
+console.log(myInventory.calcuteValue());
